@@ -1,6 +1,5 @@
 import 'dotenv/config';
 import express from 'express';
-import { getCommands } from './models/commands.js';
 import {
     InteractionType,
     InteractionResponseType

@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node-terminal",
+            "command": "npm run dev",
+            "name": "dev",
+            "request": "launch"
+        },
+        {
+            "type": "node-terminal",
+            "command": "npm run register",
+            "name": "register commands",
+            "request": "launch"
+        }
+    ]
+}

@@ -10,6 +10,7 @@
     "node-fetch": "^3.3.2"
   },
   "scripts": {
-    "dev": "node app.js"
+    "dev": "node app.js",
+    "register": "node register_commands.js"
   }
 }
