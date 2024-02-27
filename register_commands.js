@@ -21,7 +21,6 @@ try {
     }
     const result = await response.json();
     const status = response.status;
-    debugger
 } catch (error) {
     console.error(error);
 }
