@@ -21,7 +21,7 @@
         },
         {
             "type": "node-terminal",
-            "command": "nodemon",
+            "command": "DEBUG=App,CommandsController nodemon",
             "name": "nodemon",
             "request": "launch"
         }
