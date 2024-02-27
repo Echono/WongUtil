@@ -12,6 +12,21 @@
             "command": "npm run register",
             "name": "register commands",
             "request": "launch"
+        },
+        {
+            "type": "node-terminal",
+            "command": "./ngrok http 3000",
+            "name": "ngrok",
+            "request": "launch"
+        },
+    ],
+    "compounds": [
+        {
+            "name": "ngrok | dev",
+            "configurations": [
+                "dev",
+                "ngrok"
+            ]
         }
     ]
 }
