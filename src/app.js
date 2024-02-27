@@ -12,8 +12,10 @@ const client = new Client({
     ]
 });
 
-debug('Registering commands');
-registerComamnds();
+debug(`${process.env.REFRESH_COMMANDS === 'true' ? 'Uploading commands' : 'Skipping command refresh'}`);
+if(process.env.REFRESH_COMMANDS === 'true') {
+    registerComamnds();
+}
 
 debug('Logging into bot using .env token');
 client.login(process.env.BOT_TOKEN);

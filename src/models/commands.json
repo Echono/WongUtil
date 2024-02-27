@@ -1,9 +1,0 @@
-{
-    "commands": [
-        {
-            "name": "ping",
-            "type": 1,
-            "description": "responds with pong"
-        }
-    ]
-}
