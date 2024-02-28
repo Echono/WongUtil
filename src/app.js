@@ -26,8 +26,3 @@ client.on(Events.ClientReady, (c) => {
     implementInteractions(c);
     implementPresence(c);
 });
-
-client.on(Events.PresenceUpdate, (oldPresence, newPresence) => {
-    console.log(oldPresence, newPresence);
-});
-
