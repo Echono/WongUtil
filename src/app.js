@@ -21,7 +21,6 @@ debug('Logging into bot using .env token');
 client.login(process.env.BOT_TOKEN);
 client.on(Events.ClientReady, (c) => {
     debug(`Logged into: ${c.user.tag}`);
-    console.log(`${c.user.username} now online with the tag: ${c.user.tag}`);
     implementInteractions(c);
 });
 
