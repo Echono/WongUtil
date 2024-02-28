@@ -1,0 +1,17 @@
+### Add user to subscriptions
+POST http://localhost:4004/odata/v4/subscription/UserSet
+Content-Type: application/json
+
+{
+    "ID": "@123456789",
+    "tag": "wonggong#1234",
+    "username": "wonggong"
+}
+
+### Remove user from subscriptions
+POST http://localhost:4004/odata/v4/subscription/unsubscribe
+Content-Type: application/json
+
+{
+    "ID": "@123456789"
+}
