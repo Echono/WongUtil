@@ -5,26 +5,40 @@ require('dotenv').config();
 const execute = async (interaction) => {
     const instance = _getAxiosInstance();
     const { guild } = interaction;
-    const data = {
+    const guildData = {
         guild: {
             ID: guild.id,
             name: guild.name
         }
     };
-    const response = await instance.post("forceCreateGuild", data);
-    debugger;
+    try {
+        const guildResponse = await instance.post("forceCreateGuild", guildData);
+        const { code } = guildResponse.data;
+        if(code === 200 || code === 203) {
+            const { channel } = interaction;
+            const channelData = {
+                ID: channel.id,
+                name: channel.name,
+                guild_ID: guildResponse.data.guild_ID
+            }
+            const channelResponse = await instance.post("ChannelSet", channelData);
+            await interaction.reply('Bot will be watching this channel');
+        }
+    } catch(error) {
+        if(error.response.data.error.message === "Entity already exists") {
+            await interaction.reply('Bot is already watching over this channel');
+        }
+    }  
 };
 
 const _getAxiosInstance = () => {
-    if(!this.AXIOS_INSTANCE) {
-        this.AXIOS_INSTANCE = axios.create({
-            baseURL: process.env.CAP_URL + process.env.CAP_SUBSCRIPTION_SERVICE,
-            timeout: 1000,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-    };
+    this.AXIOS_INSTANCE ??= axios.create({
+        baseURL: process.env.CAP_URL + process.env.CAP_SUBSCRIPTION_SERVICE,
+        timeout: 1000,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
     return this.AXIOS_INSTANCE;
 }
 
