@@ -3,36 +3,9 @@
     "configurations": [
         {
             "type": "node-terminal",
-            "command": "npm run dev",
-            "name": "dev",
-            "request": "launch"
-        },
-        {
-            "type": "node-terminal",
-            "command": "npm run register",
-            "name": "register commands",
-            "request": "launch"
-        },
-        {
-            "type": "node-terminal",
-            "command": "./ngrok http 3000",
-            "name": "ngrok",
-            "request": "launch"
-        },
-        {
-            "type": "node-terminal",
             "command": "DEBUG=App,CommandsController nodemon",
             "name": "nodemon",
             "request": "launch"
-        }
-    ],
-    "compounds": [
-        {
-            "name": "ngrok | dev",
-            "configurations": [
-                "dev",
-                "ngrok"
-            ]
         }
     ]
 }
