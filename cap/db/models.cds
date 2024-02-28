@@ -1,4 +1,4 @@
-context Subscriptions {
+context GameAnnouncer {
 
     entity user {
         key ID       : String;

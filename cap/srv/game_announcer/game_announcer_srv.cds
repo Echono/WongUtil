@@ -1,9 +1,9 @@
 using {
-   Subscriptions.user as user,
+   GameAnnouncer.user as user,
    ReturnTypes
 } from '../../db/models';
 
-service SubscriptionService {
+service GameAnnouncerService {
 
    entity UserSet as projection on user;
    action unsubscribe(ID : String) returns ReturnTypes.genericResponse
