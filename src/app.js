@@ -1,12 +1,14 @@
 require('dotenv').config();
 const { Client, IntentsBitField, Events } = require('discord.js');
 const { registerComamnds, implementInteractions } = require('./controllers/CommandsController');
+const { implementPresence } = require('./controllers/PresenceController');
 const debug = require('debug')('App');
 
 debug('Creating a new client');
 const client = new Client({
     intents: [
         IntentsBitField.Flags.Guilds,
+        IntentsBitField.Flags.GuildPresences,
         IntentsBitField.Flags.GuildMessages,
         IntentsBitField.Flags.MessageContent
     ]
@@ -22,5 +24,10 @@ client.login(process.env.BOT_TOKEN);
 client.on(Events.ClientReady, (c) => {
     debug(`Logged into: ${c.user.tag}`);
     implementInteractions(c);
+    implementPresence(c);
+});
+
+client.on(Events.PresenceUpdate, (oldPresence, newPresence) => {
+    console.log(oldPresence, newPresence);
 });
 
