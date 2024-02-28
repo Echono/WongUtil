@@ -3,7 +3,7 @@
     "configurations": [
         {
             "name": "nodemon",
-            "command": "DEBUG=App,CommandsController nodemon",
+            "command": "DEBUG=App,CommandsController,slashCommand_subscribe nodemon",
             "type": "node-terminal",
             "request": "launch"
         },
