@@ -35,15 +35,12 @@ const implementInteractions = (client) => {
     });
     client.on(Events.InteractionCreate, async (interaction) => {
         if (!interaction.isChatInputCommand()) return;
-        debug(`Command: '${interaction.commandName}' was called by: '${interaction.user.tag}'`);
         const command = interaction.client.commands.get(interaction.commandName);
         if(!command) {
             debug(`Command: '${interaction.commandName}' was not found in app`);
         };
         try {
-            debug(`Attempting to execute: '${interaction.commandName}'`);
             await command.execute(interaction);
-            debug(`Successfully executed: '${interaction.commandName}'`);
         } catch(error) {
             console.error(error);
         }
