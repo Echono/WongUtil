@@ -1,5 +1,5 @@
-### Add user to subscriptions
-POST http://localhost:4004/odata/v4/subscription/UserSet
+### Add user to game-announcers
+POST http://localhost:4004/odata/v4/game-announcer/UserSet
 Content-Type: application/json
 
 {
@@ -8,10 +8,20 @@ Content-Type: application/json
     "username": "wonggong"
 }
 
-### Remove user from subscriptions
-POST http://localhost:4004/odata/v4/subscription/unsubscribe
+### Remove user from game-announcers
+POST http://localhost:4004/odata/v4/game-announcer/unsubscribe
 Content-Type: application/json
 
 {
     "ID": "@123456789"
+}
+
+### forceCreateGuild
+POST http://localhost:4004/odata/v4/game-announcer/forceCreateGuild
+Content-Type: application/json
+
+{
+    "guild": {
+        "ID": "123456789"
+    }
 }

@@ -32,4 +32,11 @@ context ReturnTypes {
         message : String;
     }
 
+    type guildCheckResponse {
+        code         : Integer;
+        isRegistered : Boolean;
+        guild_ID     : String;
+        message      : String;
+    }
+
 }
