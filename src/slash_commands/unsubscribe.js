@@ -18,6 +18,9 @@ const execute = async (interaction) => {
         debug(`Removal successful: ${interaction.user.tag}`);
         await interaction.reply(`Removed ${interaction.user.tag} from subscription list`);
     } catch(error) {
+        if(error.response.data.error.message === "User not found in subscription list") {
+            await interaction.reply(`User: ${interaction.user.tag} is not on the subscription list`)
+        }
         await interaction.reply('Something went wrong under removal');
     }
 };
