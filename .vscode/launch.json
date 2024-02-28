@@ -2,10 +2,25 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "node-terminal",
-            "command": "DEBUG=App,CommandsController nodemon",
             "name": "nodemon",
+            "command": "DEBUG=App,CommandsController nodemon",
+            "type": "node-terminal",
             "request": "launch"
+        },
+        {
+            "name": "cap",
+            "command": "npm run watch --prefix ./cap",
+            "type": "node-terminal",
+            "request": "launch",
+        },
+    ],
+    "compounds": [
+        {
+            "name": "DB | BOT",
+            "configurations": [
+                "nodemon",
+                "cap"
+            ]
         }
     ]
 }
