@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Client, IntentsBitField, Events } = require('discord.js');
 const { registerComamnds, implementInteractions } = require('./controllers/CommandsController');
 const { implementPresence } = require('./controllers/PresenceController');
+const { announceGame } = require('./controllers/MessageController');
 const debug = require('debug')('App');
 
 debug('Creating a new client');

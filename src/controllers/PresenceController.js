@@ -1,5 +1,6 @@
 const { Events } = require('discord.js');
 const { APP_IDS } = require('../models/application_ids');
+const { announceGame } = require('./MessageController');
 const axios = require('axios');
 
 const implementPresence = (client) => {
@@ -14,7 +15,7 @@ const implementPresence = (client) => {
             }, []);
             gameActivities.forEach((game) => {
                 const execute = _determineFunction(game.applicationId);
-                execute(oldPresence, game);
+                execute(newPresence, game);
             });
         }
     });
@@ -39,7 +40,7 @@ const _getFunctions = () => {
 
 const _validateUserInSubscriptions = async (userId) => {
     const instance = axios.create({
-        baseURL: process.env.CAP_URL + process.env.CAP_SUBSCRIPTION_SERVICE,
+        baseURL: process.env.CAP_URL + process.env.CAP_GAME_ANNOUNCER_SERVICE,
         timeout: 1000,
         headers: {
             'Content-Type': 'application/json'
@@ -58,6 +59,11 @@ const _validateUserInSubscriptions = async (userId) => {
 };
 
 const gameLeagueOfLegends = (presence, game) => {
+    if(game.state.toLowerCase() === 'in lobby') {
+        const { user } = presence
+        const message = `${user.tag} just entered a league of legends Lobby`;
+        announceGame(presence, message);
+    }
 };
 
 const gameCounterStrike2 = (presence, game) => {

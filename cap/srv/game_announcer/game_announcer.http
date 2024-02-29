@@ -25,3 +25,7 @@ Content-Type: application/json
         "ID": "123456789"
     }
 }
+
+### get guild
+GET http://localhost:4004/odata/v4/game-announcer/GuildSet('1211673966335361044')
+Content-Type: application/json
