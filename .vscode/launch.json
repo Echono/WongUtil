@@ -6,21 +6,6 @@
             "command": "DEBUG=App,CommandsController,slashCommand_subscribe nodemon",
             "type": "node-terminal",
             "request": "launch"
-        },
-        {
-            "name": "cap",
-            "command": "npm run watch --prefix ./cap",
-            "type": "node-terminal",
-            "request": "launch",
-        },
-    ],
-    "compounds": [
-        {
-            "name": "DB | BOT",
-            "configurations": [
-                "nodemon",
-                "cap"
-            ]
         }
     ]
 }
