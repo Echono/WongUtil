@@ -1,8 +1,5 @@
 require('dotenv').config();
 const { Client, IntentsBitField, Events } = require('discord.js');
-const { registerComamnds, implementInteractions } = require('./controllers/CommandsController');
-const { implementPresence } = require('./controllers/PresenceController');
-const { announceGame } = require('./controllers/MessageController');
 const debug = require('debug')('App');
 
 debug('Creating a new client');
@@ -17,13 +14,10 @@ const client = new Client({
 
 debug(`${process.env.REFRESH_COMMANDS === 'true' ? 'Uploading commands' : 'Skipping command refresh'}`);
 if(process.env.REFRESH_COMMANDS === 'true') {
-    registerComamnds();
 }
 
 debug('Logging into bot using .env token');
 client.login(process.env.BOT_TOKEN);
 client.on(Events.ClientReady, (c) => {
     debug(`Logged into: ${c.user.tag}`);
-    implementInteractions(c);
-    implementPresence(c);
 });
